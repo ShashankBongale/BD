@@ -1,0 +1,22 @@
+1)To get bow_vul.txt by passing csv file to the mapreduce.
+    For compiling:
+        sudo javac -classpath /usr/local/hadoop/share/hadoop/common/hadoop-common-2.9.1.jar:/usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.9.1.jar:/usr/local/hadoop/share/hadoop/common/lib/commons-cli-1.2.jar -d /home/shashank/Desktop/super_final WordCount.java
+    For generating jar file:
+        (Store the generated class files generated(from above step) into a wordclass folder)
+        sudo jar -cvf Sortn.jar -C /home/shashank/Desktop/super_final/wordclass .
+    For executing the wordcount program by taking inputs from hdfs
+        ./hadoop jar /home/shashank/Desktop/super_final/wordcount.jar WordCount /new/IPL_runs.csv bow_vul
+2)To get bow_final.txt by taking bow_vul.txt as input
+    For compiling:
+        sudo javac -classpath /usr/local/hadoop/share/hadoop/common/hadoop-common-2.9.1.jar:/usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.9.1.jar:/usr/local/hadoop/share/hadoop/common/lib/commons-cli-1.2.jar -d /home/shashank/Desktop/super_final Sortndes.java
+    For generating jar file:
+        (Store the generated class files generated(from above step) into a sortclass folder)
+        sudo jar -cvf sort.jar -C /home/shashank/Desktop/super_final/sortclass .
+    For executing the wordcount program by taking inputs from hdfs:
+        ./hadoop jar /home/shashank/Desktop/super_final/sort.jar Sortndes /user/hduser/bow_vul bow_final
+3)To get bat_vul.txt by passing csv file to mapreduce(Since we have already compiled we make use the older jar files)
+    For executing the wordcount program by taking inputs from hdfs:
+         ./hadoop jar /home/shashank/Desktop/super_final/wordcount.jar WordCount /new/IPL_wickets.csv bat_vul
+4)To get bat_final.txt by taking bat_vul.txt as input
+    For executing the wordcount program by taking inputs from hdfs:
+        ./hadoop jar /home/shashank/Desktop/super_final/sort.jar Sortndes /user/hduser/bat_vul bat_final

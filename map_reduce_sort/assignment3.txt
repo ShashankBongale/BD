@@ -1,0 +1,7 @@
+A csv file is fed into the Map Reduce function as input. The mapper function forms (key, value) pairs for every occurance of the Combination(Batsman_Bowler) with value initialized to 1 indicating that a wicket was taken. Since the mapper only takes into consideration the occurences of a particular key, the csv file fed into the Map Reduce function only contains those Batsman_Bowler combinations for which wicket was taken. The Reducer on the other hand, adds all the corresponding values for a given key and gives the total number of wickets taken by a particular bowler against a particular batsman (for all possible combinations).
+
+Once we obtain the Batsman_Bowler combination as the key and the total number of wickets for that combination (for all possible combinations), this result is passed into another map reduce function by interchanging the key and value (i.e. Total number of wickets becomes Key and Batsman_Bowler combination becomes value). Now after performing the Mapper function we obtain the total number of wickets as the key and a list of all the Batsman_Bowler combinations with that key as the value. Now, the keys are sorted in descending order in the Map function and after the reduce function, all the combinations are printed individually with the help of the command IterableWrite.
+
+Rhythm Girdhar  01FB16ECS302
+Saloni Govil    01FB16ECS333
+Sanjay K A      01FB16ECS341
